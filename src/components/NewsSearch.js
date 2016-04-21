@@ -14,25 +14,6 @@ var block = require('bem-cn'),
 const host = 'http://api.datatoknowledge.it/search'
 const searchkit = new SearchkitManager(host)
 
-const NewsItem = (props) => {
-  const {bemBlocks, result} = props
-  const source:any = _.extend({}, result._source, result.highlight)
-
-  return (
-    <div className={bemBlocks.item().mix(bemBlocks.container('item')).mix('row')} data-qa='hit'>
-      <div className='row'>
-      <a href={source.uri} target='_blank'>
-        {/*<img data-qa='poster' className={bemBlocks.item('poster')} src={source.imageUrl} width='80' height='120'/>*/}
-        <div data-qa='title' className={bemBlocks.item('title')} dangerouslySetInnerHTML={{__html:source.title}}></div>
-      </a>
-      </div>
-      <div className='row'>
-        <div data-qa='title' className={bemBlocks.item('description')} dangerouslySetInnerHTML={{__html:source.description}}/>
-      </div>
-    </div>
-  )
-}
-
 export class NewsSearch extends React.Component {
   constructor(props){
     super(props)
